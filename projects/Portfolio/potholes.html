@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Simple JSON Example</title>
+        <style>
+           <style>
+            p {font-size:1.7em;line-height:1.5em; margin-left: 24px;}
+            pre {font-size: 2em;}
+            h1 {background-color: orange;}
+            h3 {background-color: Brown; font-size: 4em;}
+            h4 {color: Brown; font-size: 2.5em;}
+            div {border: 1.3px solid red; margin: 6px; border-radius: 20px; background-color: #ffd700;}
+        </style>
+    </head>
+    <body>
+    <h3>Chicago is a BEAUTY</h3>
+    <h4> <u> Potholes </u>
+    </h4>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        /*
+            This script retrieves food inspection data for zip 60618
+            for the 4th quarter of 2016 from the 
+            City of Chicago Data Portal
+            
+            It stores the returned results in a variable named inspections.
+            
+            This script doesn't update the DOM.
+        
+        
+        */
+        
+        // base URL to the big potholes
+        var baseURL = 'https://data.cityofchicago.org/resource/787j-mys9.json';
+        
+        // optional filters we're appending - date range and zip
+        var filters = '?status=Open';
+        
+        // full URL
+        var Url = baseURL + filters;
+        
+        console.log (Url);
+        
+        $(
+        
+            $.getJSON(Url)
+                .done (function (data) {
+                    // TODO:
+                    console.log(data);
+                    Url = data;
+        
+             $.each(data, function (index, value){
+                var html = "<div><h1>" + value.type_of_service_request + "</h1>" + "Value Community Area: " + value.community_area + "<br>" + "Value Creation Date: " + value.creation_date + "<br>" + "Street Address: " + value.street_address
+                    
+                    $("body").append(html);
+                    
+                });
+            })
+                
+        )
+        
+    </script>
+    </body>
+</html>

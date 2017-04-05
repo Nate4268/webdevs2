@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+  background-color: #ff0000;
+}
+
+div {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+}
+
+mycircle {
+  position: absolute;
+  display: block;
+  width: 400px;
+  height: 400px;
+  top: -150px;
+  left: -150px;
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform .4s;
+  transition: -webkit-transform .4s;
+  transition: transform .4s;
+  transition: transform .4s, -webkit-transform .4s;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+mycircle.current {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+mycircle:nth-child(1) {
+  background-color: #F06292;
+}
+
+mycircle:nth-child(2) {
+  background-color: #4DD0E1;
+}
+
+mycircle:nth-child(3) {
+  background-color: #FFD54F;
+}
+
+        </style>
+        <title> </title>
+    </head>
+    <body>
+<div>
+  <mycircle></mycircle><mycircle></mycircle><mycircle></mycircle>
+</div>
+<button onclick="prev()">Previous Circle</button><button onclick="next()">Next Circle</button>
+<script>
+    var wrapper = document.querySelector('div');
+var items = wrapper.children;
+var len = items.length;
+var current = 0;
+
+function prev() {
+  current--;
+  if (current < 0) {
+    current = len - 1;
+  }
+  change();
+}
+
+function next() {
+  current++;
+  current = current % len;
+  change();
+}
+
+function change() {
+  [].forEach.call(items, function(item) {
+    item.classList.remove('current');
+  });
+  addClass();
+}
+
+function addClass() {
+  items[current].classList.add('current');
+}
+
+addClass();
+</script>
+    </body>
+</html>

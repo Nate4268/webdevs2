@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reaction Tester</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <style>
+            body {
+                
+                font-family: 'Montserrat', sans-serif;
+
+            }
+            
+             #circle {
+                width: 200px;
+				height: 200px;
+				background-color:blue;
+				border-radius:50%;
+				display:none;
+				position:relative;
+            } 
+        </style>
+    </head>
+    
+    <body>
+        
+        <h1>Reaction Tester!</h1>
+        
+        <p>Click the circles as quickly as possible.</p>
+        
+        <br>
+        
+        <p><strong>Your time:  <span id="marr"></span></strong> </p>
+        
+        <br>
+        
+        <div id="circle"></div>
+        
+        <script>
+           
+           //Variables
+           var madeTime;
+           var clickTime;
+           var reactTime;
+           
+           
+           //Functions
+           function colorRandomizer() {
+                
+                var letters = '0123456789ABCDEF'.split('');
+                var color = '#';
+                for (var i = 0; i < 6; i++ ) {
+                    color += letters[Math.floor(Math.random() * 15)];
+                }
+                return color;
+            }
+            
+            function goCircle(){
+                
+                var time =  Math.random();
+            
+                time = time * 5000;
+                
+                setTimeout(function(){ 
+                    
+                    var top = Math.random();
+                    
+                    top = top * 300;
+                    
+                    var left = Math.random();
+                    
+                    left = left * 700;
+                    
+                    document.getElementById("circle").style.top = top + "px";
+                    
+                    document.getElementById("circle").style.left = left + "px";
+                    
+                    document.getElementById("circle").style.backgroundColor = colorRandomizer();
+                    
+                    document.getElementById("circle").style.display = "block";
+                    
+                    madeTime = Date.now();
+                    
+                }, time); 
+                
+            
+            }
+            
+            //Central Code
+            document.getElementById("circle").onclick = function(){
+                
+                clickTime = Date.now();
+                
+                reactTime = [clickTime-madeTime]/1000;
+                
+                if (reactTime > 60.000) {
+                    
+                    reactTime = Math.round(reactTime/60) + " minutes";
+                    
+                }
+                
+                else {
+                    
+                    reactTime = [clickTime-madeTime]/1000 + " seconds";
+                    
+                }
+                
+                document.getElementById("marr").innerHTML = reactTime;
+                
+                console.log("reactTime");
+                
+                this.style.display = "none";
+                
+                
+                goCircle();
+            }
+            
+            goCircle();
+            
+        </script>
+        
+     
+       
+              
+    </body>
+</html>
