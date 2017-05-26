@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>Animation Example</title>
+  <style>
+    canvas {
+      border: #245 10px solid;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="600px" height="600px"></canvas>
+<h1>Frog</h1>
+  <script>
+var canvas = document.querySelector("#myCanvas");
+var context = canvas.getContext("2d");
+context.arc(300, 200, 93, 0, 2 * Math.PI, true);
+context.arc(300, 400, 93, 0, 2 * Math.PI, true);
+context.lineWidth = 7 ;
+context.fillStyle = "#00FF7F";
+context.moveTo(220,400);
+context.lineTo(300,450);
+context.moveTo(380,400);
+context.lineTo(310,450);
+context.moveTo(400,500);
+context.lineTo(390,300);
+context.moveTo(400,500);
+context.lineTo(93,500);
+context.moveTo(346,285);
+context.lineTo(354,320);
+context.moveTo(323,135);
+context.lineTo(327,150);
+context.moveTo(323,140);
+context.lineTo(327,150);
+context.moveTo(280,180);
+context.lineTo(380,160);
+context.moveTo(250,280);
+context.lineTo(250,325);
+context.moveTo(210,220);
+context.lineTo(210,375);
+context.moveTo(210,500);
+context.lineTo(210,300);
+context.closePath()
+context.arc(150, 500, 53, 0, 2 * Math.PI, true);
+context.arc(450, 500, 53, 0, 2 * Math.PI, true);
+
+
+
+ 
+context.fill();
+context.stroke();
+
+
+
+  </script>
+ 
+</body>
+ 
+</html>
